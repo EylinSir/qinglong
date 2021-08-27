@@ -1,12 +1,4 @@
-<p align="center">
-  <a href="https://github.com/whyour/qinglong">
-    <img width="150" src="/public/images/qinglong.png">
-  </a>
-</p>
-
-<h1 align="center">青龙</h1>
-
-<div align="center">
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=EylinX&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)](https://github.com/anuraghazra/github-readme-stats)
 
 Python/JavaScript/Shell/Typescript 定时任务管理
 
