@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProLayout from '@ant-design/pro-layout';
+import ProLayout, { PageLoading } from '@ant-design/pro-layout';
 import {
   enable as enableDarkMode,
   disable as disableDarkMode,
@@ -56,9 +56,6 @@ export default function (props: any) {
       history.push('/login');
     }
     vhCheck();
-
-    // patch custome layout title as react node [object, object]
-    document.title = '控制面板';
   }, []);
 
   useEffect(() => {
@@ -89,10 +86,13 @@ export default function (props: any) {
     !navigator.userAgent.includes('Chrome');
   const isQQBrowser = navigator.userAgent.includes('QQBrowser');
 
-  return (
+  return loading ? (
+    <PageLoading />
+  ) : (
     <ProLayout
       selectedKeys={[props.location.pathname]}
       loading={loading}
+      className={theme.theme === 'vs-dark' ? 'dark' : 'white'}
       title={
         <>
           控制面板
@@ -132,7 +132,12 @@ export default function (props: any) {
           },
         ];
       }}
-      pageTitleRender={() => '控制面板'}
+      pageTitleRender={(props, pageName, info) => {
+        if (info) {
+          return `${info.pageName} - 控制面板`;
+        }
+        return '控制面板';
+      }}
       {...defaultProps}
     >
       {React.Children.map(props.children, (child) => {
