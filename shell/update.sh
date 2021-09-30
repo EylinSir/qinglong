@@ -308,6 +308,8 @@ patch_version() {
     if ! type ts-node >/dev/null 2>&1; then
         pnpm i -g ts-node typescript tslib
     fi
+
+    git config --global pull.rebase false
 }
 
 reload_pm2() {
@@ -434,6 +436,7 @@ main() {
     local log_time=$(date "+%Y-%m-%d-%H-%M-%S")
     local log_path="$dir_log/update/${log_time}_$p1.log"
     local begin_time=$(date '+%Y-%m-%d %H:%M:%S')
+
     case $p1 in
     update)
         echo -e "## 开始执行... $begin_time\n" >>$log_path
